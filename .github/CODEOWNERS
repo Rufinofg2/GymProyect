@@ -1,0 +1,12 @@
+# Cada línea define quién es dueño de qué parte del código
+# y por lo tanto quién DEBE aprobar el PR (si activás
+# "Require review from Code Owners" en la branch protection).
+#
+# Reemplazá estos usuarios/equipos por los reales de tu organización.
+
+# Dueño por defecto de todo el repo
+*       @tu-org/tu-equipo-backend
+
+# Ejemplo de dueños específicos por carpeta
+# /src/main/java/com/tuapp/security/   @tu-org/equipo-seguridad
+# /.github/                            @tu-org/devops

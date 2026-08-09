@@ -56,7 +56,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: ['17', '21']
+        # Spring Boot 4.1 + <java.version>21</java.version> → solo JDK 21
+        java: ['21']
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -130,13 +131,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: ${{ env.JAVA_DISTRIBUTION }}
-          java-version: '21'
-          cache: 'maven'
-
       - name: Run Trivy filesystem scan (vulnerabilidades conocidas)
         uses: aquasecurity/trivy-action@0.24.0
         with:
@@ -145,21 +139,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
           format: 'table'
-
-      - name: OWASP Dependency Check
-        run: |
-          mvn -B org.owasp:dependency-check-maven:check \
-            -DfailBuildOnCVSS=8 \
-            -DsuppressionFile=.github/dependency-check-suppressions.xml || true
-        continue-on-error: true
-
-      - name: Upload dependency-check report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependency-check-report
-          path: target/dependency-check-report.html
-          retention-days: 14
 
   # ────────────────────────────────
   # 5. GATE FINAL — este es el único check que hay que

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/client", produces = "application/json")
 @RequiredArgsConstructor
 public class ClientController {
-
+//wasa
     private ClientService clientService;
 }

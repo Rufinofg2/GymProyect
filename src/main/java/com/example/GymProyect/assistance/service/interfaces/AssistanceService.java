@@ -1,4 +1,4 @@
-package com.example.GymProyect.attendance.service.interfaces;
+package com.example.GymProyect.assistance.service.interfaces;
 
-public interface AttendanceService {
+public interface AssistanceService {
 }

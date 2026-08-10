@@ -1,4 +1,4 @@
-package com.example.GymProyect.attendance.service.imp;
+package com.example.GymProyect.assistance.service.imp;
 
-public class AttendanceImpl {
+public class AssistanceImpl {
 }

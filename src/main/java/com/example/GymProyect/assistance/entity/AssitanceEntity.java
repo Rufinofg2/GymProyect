@@ -1,4 +1,4 @@
-package com.example.GymProyect.attendance.entity;
+package com.example.GymProyect.assistance.entity;
 
 
 import com.example.GymProyect.client.entity.Cliente;
@@ -8,13 +8,13 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "attendance")
+@Table(name = "assistance")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AttendanceEntity {
+public class AssitanceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

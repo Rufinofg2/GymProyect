@@ -1,4 +1,4 @@
 package com.example.GymProyect.assistance.dto;
 
-public record AttendanceDTO() {
+public record AssistanceDTO() {
 }

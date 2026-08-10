@@ -24,8 +24,8 @@ public class AssitanceEntity {
     private LocalDateTime fecha;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente client;
 
 
 }

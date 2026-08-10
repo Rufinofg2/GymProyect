@@ -25,14 +25,14 @@ public class Plan {
     private String name;
 
 
-    @Column(name = "days_week", nullable = false)
-    private int daysWeek;
+    @Column(name = "days_week")
+    private Integer daysWeek;
 
     @Column(name = "duracion_dias", nullable = false)
     private int durationDays;
 
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     @OneToMany(mappedBy = "plan")

@@ -1,4 +1,4 @@
 package com.example.GymProyect.attendance.repository;
 
-public class AttendanceRepository {
+public interface AttedanceRepository {
 }

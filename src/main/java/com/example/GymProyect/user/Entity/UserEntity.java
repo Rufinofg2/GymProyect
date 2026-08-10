@@ -24,7 +24,7 @@ public class UserEntity {
     private Long id;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cliente cliente;
 
     @Column(name = "email",nullable = false, unique = true)
@@ -37,6 +37,7 @@ public class UserEntity {
     private boolean enabled;
 
 
+    @Enumerated(EnumType.STRING)
     @Column (name = "role",nullable = false)
     private Roles rol;
 
@@ -47,6 +48,12 @@ public class UserEntity {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updated_at;
 
+
+    @PrePersist
+    private void onCreate() {
+        this.created_at = LocalDateTime.now();
+        this.updated_at = LocalDateTime.now();
+    }
 
 
     @PreUpdate

@@ -4,6 +4,7 @@ import com.example.GymProyect.user.Entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -38,7 +39,7 @@ public class Cliente {
     private String dni;
 
     @Column(name = "date_of_birth", nullable = false)
-    private LocalDateTime date_of_birth;
+    private LocalDate date_of_birth;
 
 
 

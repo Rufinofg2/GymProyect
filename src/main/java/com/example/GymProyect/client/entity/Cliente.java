@@ -1,6 +1,6 @@
 package com.example.GymProyect.client.entity;
 
-import com.example.GymProyect.UserMod.Entity.UserEntity;
+import com.example.GymProyect.user.Entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

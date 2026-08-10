@@ -1,4 +1,4 @@
-package com.example.GymProyect.UserMod.Enums;
+package com.example.GymProyect.user.Enums;
 
 public enum Roles {
     Cliente,Profesor,Admin

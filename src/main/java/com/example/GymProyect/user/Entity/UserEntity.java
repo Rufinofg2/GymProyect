@@ -1,7 +1,7 @@
-package com.example.GymProyect.UserMod.Entity;
+package com.example.GymProyect.user.Entity;
 
-import com.example.GymProyect.Entities.Cliente;
-import com.example.GymProyect.UserMod.Enums.Roles;
+import com.example.GymProyect.client.entity.Cliente;
+import com.example.GymProyect.user.Enums.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -20,8 +20,9 @@ public class UserServiceImpl implements UserService {
     private final UserRespository userRespository;
     private final PasswordEncoder passwordEncoder;
 
-    UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
-        if (UserRespository.existsByEmail(userRequestDTO.email())){
+    @Override
+    public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
+        if (userRespository.existsByEmail(userRequestDTO.email())){
             throw new EmailAlreadyExists("El email ya existe");
         }
         UserEntity user = UserEntity.builder()
@@ -40,6 +41,7 @@ public class UserServiceImpl implements UserService {
         );
     }
 
+    @Override
     public List<UserResponseDTO> obtenerTodos(){
         return userRespository.findAll()
                 .stream()

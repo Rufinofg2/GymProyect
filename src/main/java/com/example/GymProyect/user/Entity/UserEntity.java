@@ -31,8 +31,8 @@ public class UserEntity {
     @Column (name = "password",nullable = false)
     private String password;
 
-    @Column(name = "enabled", nullable = false)
-    private boolean enabled;
+    @Column(name = "isEnabled", nullable = false)
+    private boolean isEnabled;
 
 
     @Enumerated(EnumType.STRING)

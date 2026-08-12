@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
                 .email(userRequestDTO.email().toLowerCase())
                 .password(passwordEncoder.encode(userRequestDTO.password()))
                 .rol(userRequestDTO.rol())
-                .enabled(true)
+                .isEnabled(true)
                 .build();
         UserEntity savedUser = userRespository.save(user);
         return new UserResponseDTO(savedUser.getId(),

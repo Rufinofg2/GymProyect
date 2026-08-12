@@ -21,8 +21,8 @@ public interface UserRespository extends JpaRepository<UserEntity, Long> {
     List<UserEntity> findByRole(Roles role);
 
     //verifica si el usuario esta activo o  inactivo
-    List<UserEntity> findByEnabled(boolean enabled);
+    List<UserEntity> findByIsEnabled(boolean isEnabled);
 
     //busca por rol y activo
-    List<UserEntity> findByEnabledAndRole(boolean enabled, Roles role);
+    List<UserEntity> findByIsEnabledAndRole(boolean isEnabled, Roles role);
 }

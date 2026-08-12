@@ -4,6 +4,7 @@ import com.example.GymProyect.user.Entity.UserEntity;
 import com.example.GymProyect.user.Repository.UserRespository;
 import com.example.GymProyect.user.Service.interfaces.UserService;
 import com.example.GymProyect.user.UserException.EmailAlreadyExists;
+import com.example.GymProyect.user.UserException.UserNotFound;
 import com.example.GymProyect.user.dto.Request.UserRequestDTO;
 import com.example.GymProyect.user.dto.Response.UserResponseDTO;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +53,25 @@ public class UserServiceImpl implements UserService {
                         user.getCreated_at(),
                         user.getUpdated_at()))
                 .collect(Collectors.toList());
+    }
+
+
+    public UserResponseDTO obtenerporID(Long id){
+        UserEntity user = userRespository.findById(id).orElseThrow(() -> new UserNotFound("El usuario no existe"));
+        return new UserResponseDTO(user.getId(),
+                user.getEmail(),
+                user.isEnabled(),
+                user.getRol(),
+                user.getCreated_at(),
+                user.getUpdated_at());
+    }
+
+
+    public void eliminarUsuario(Long id){
+        if (!userRespository.existsById(id)){
+            throw new UserNotFound("El usuario no existe");
+        }
+        userRespository.deleteById(id);
     }
 
 

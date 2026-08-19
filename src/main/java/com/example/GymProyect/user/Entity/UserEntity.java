@@ -22,7 +22,7 @@ public class UserEntity {
     private Long id;
 
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cliente cliente;
 
     @Column(name = "email",nullable = false, unique = true)
@@ -37,20 +37,20 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     @Column (name = "role",nullable = false)
-    private Roles rol;
+    private Roles role;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime created_at;
 
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private LocalDateTime updated_at;
 
 
     @PrePersist
     private void onCreate() {
         this.created_at = LocalDateTime.now();
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = null;
     }
 
 

@@ -7,6 +7,7 @@ import com.example.GymProyect.user.Enums.Roles;
 import com.example.GymProyect.user.Repository.UserRespository;
 import com.example.GymProyect.user.Service.interfaces.UserService;
 import com.example.GymProyect.user.UserException.EmailAlreadyExists;
+import com.example.GymProyect.user.UserException.UserNotFound;
 import com.example.GymProyect.user.dto.response.UserResponse;
 import com.example.GymProyect.user.dto.response.UserResponseDTO;
 import com.example.GymProyect.user.dto.request.UserRequestDTO;
@@ -73,6 +74,49 @@ public class UserServiceImpl implements UserService {
                 .timestamp(LocalDateTime.now())
                 .build();
 
+    }
+
+    @Override
+    public UserResponseDTO obtenerPorId(Long id){
+        UserEntity userEntity = userRespository.findById(id)
+                .orElseThrow(() -> new UserNotFound("No se encontro el usuario con el id: " + id + ""));
+
+        return UserResponseDTO.builder()
+                .success(true)
+                .message("Usuario Encontrado")
+                .data(UserResponse.builder()
+                        .id(userEntity.getId())
+                        .email(userEntity.getEmail())
+                        .enabled(userEntity.isEnabled())
+                        .rol(userEntity.getRole())
+                        .client(ClientResponse.builder()
+                                .name(userEntity.getCliente().getName())
+                                .lastname(userEntity.getCliente().getLastname())
+                                .dni(userEntity.getCliente().getDni())
+                                .phone_number(userEntity.getCliente().getPhone_number())
+                                .date_of_birth(userEntity.getCliente().getDate_of_birth())
+                                .build())
+                        .created_at(userEntity.getCreated_at())
+                        .updated_at(userEntity.getUpdated_at())
+                        .build())
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+
+    @Override
+    public void eliminarPorId(Long id){
+        if (!userRespository.existsById(id)){
+            throw new UserNotFound("No se encontro el usuario con el id: " + id + "");
+        }
+        userRespository.deleteById(id);
+    }
+
+    @Override
+    public void desahibilitarUsuario(Long id){
+        UserEntity userEntity = userRespository.findById(id)
+                .orElseThrow(() -> new UserNotFound("No se encontro el usuario con el id: " + id + ""));
+        userEntity.setEnabled(false);
+        userRespository.save(userEntity);
     }
 
     @Override

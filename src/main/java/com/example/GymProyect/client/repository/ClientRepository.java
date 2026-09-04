@@ -17,10 +17,15 @@ public interface ClientRepository extends JpaRepository<Cliente, Long> {
     Optional<Cliente> findByPhoneNumber(String phoneNumber);  // Changed from phone_number
 
     boolean existsByPhoneNumber(String phoneNumber);  // Changed from phone_number
+    Optional<Cliente> findByPhoneNumber(String phoneNumber);
+
+    boolean existsByPhoneNumber(String phoneNumber);
 
     List<Cliente> findByNameContainingIgnoreCase(String name);
 
     List<Cliente> findByLastnameContainingIgnoreCase(String lastname);
 
     Optional<Cliente> findByUserId(Long id);  // Changed from User_Id
+}
+    Optional<Cliente> findByUserId(Long id);
 }

@@ -4,6 +4,7 @@ import com.example.GymProyect.user.Service.interfaces.UserService;
 import com.example.GymProyect.user.dto.request.UserRequestDTO;
 import com.example.GymProyect.user.dto.response.UserResponse;
 import com.example.GymProyect.user.dto.response.UserResponseDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class UserController {
 
 
     @PostMapping("/signin")
-    public ResponseEntity<UserResponseDTO> singin (@RequestBody UserRequestDTO request){
+    public ResponseEntity<UserResponseDTO> signin (@Valid @RequestBody UserRequestDTO request){
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userService.createUser(request));
     }
 
@@ -29,5 +30,20 @@ public class UserController {
     @GetMapping("/all")
     public ResponseEntity<List<UserResponse>> getAllUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(this.userService.obtenerTodos());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(this.userService.obtenerPorId(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable Long id){
+        this.userService.eliminarPorId(id);
+    }
+
+    @PatchMapping("/{id}/disable")
+    public void disableUserById(@PathVariable Long id){
+        this.userService.desahibilitarUsuario(id);
     }
 }

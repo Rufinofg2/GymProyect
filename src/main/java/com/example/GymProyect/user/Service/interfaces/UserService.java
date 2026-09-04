@@ -11,7 +11,13 @@ import java.util.List;
 public interface UserService {
 
     UserResponseDTO createUser(UserRequestDTO userRequestDTO);
-    
+
+    UserResponseDTO obtenerPorId(Long id);
+
     List<UserResponse> obtenerTodos();
+
+    void eliminarPorId(Long id);
+
+    void desahibilitarUsuario(Long id);
 
 }

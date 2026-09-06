@@ -10,7 +10,7 @@ public record ClientResponse(
         String name,
         String lastname,
         String dni,
-        String phone_number,
-        LocalDate date_of_birth
+        String phoneNumber,
+        LocalDate dateOfBirth
 ) {
 }

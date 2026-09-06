@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(UserNotFound.class)
-    public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFound ex, HttpServletRequest request){
+    public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFound ex, HttpServletRequest request) {
         ErrorResponse error = ErrorResponse.builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .error(HttpStatus.NOT_FOUND.getReasonPhrase())
@@ -27,7 +27,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(EmailAlreadyExists.class)
-    public ResponseEntity<ErrorResponse> handleEmailAlreadyExists(EmailAlreadyExists ex, HttpServletRequest request){
+    public ResponseEntity<ErrorResponse> handleEmailAlreadyExists(EmailAlreadyExists ex, HttpServletRequest request) {
         ErrorResponse error = ErrorResponse.builder()
                 .status(HttpStatus.BAD_REQUEST.value())
                 .error(HttpStatus.BAD_REQUEST.getReasonPhrase())
@@ -35,17 +35,17 @@ public class GlobalExceptionHandler {
                 .path(request.getRequestURI())
                 .timestamp(LocalDateTime.now())
                 .build();
-
-
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse>handlergenericException(Exception ex){
+    public ResponseEntity<ErrorResponse> handlerGenericException(Exception ex, HttpServletRequest request) {
         ErrorResponse error = ErrorResponse.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .error(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
                 .message(ex.getMessage())
+                .path(request.getRequestURI())
+                .timestamp(LocalDateTime.now())
                 .build();
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }

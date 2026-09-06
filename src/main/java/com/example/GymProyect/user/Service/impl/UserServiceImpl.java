@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
                 .name(userRequestDTO.name())
                 .lastname(userRequestDTO.lastname())
                 .dni(userRequestDTO.dni())
-                .phone_number(userRequestDTO.phone_number())
-                .date_of_birth(userRequestDTO.date_of_birth())
+                .phoneNumber(userRequestDTO.phone_number())
+                .dateOfBirth(userRequestDTO.date_of_birth())
                 .build();
 
         UserEntity user = UserEntity.builder()
@@ -66,8 +66,9 @@ public class UserServiceImpl implements UserService {
                                 .name(newClient.getName())
                                 .lastname(newClient.getLastname())
                                 .dni(newClient.getDni())
-                                .phone_number(newClient.getPhone_number())
-                                .date_of_birth(newClient.getDate_of_birth()).build())
+                                .phoneNumber(newClient.getPhoneNumber())
+                                .dateOfBirth(newClient.getDateOfBirth())
+                                .build())
                         .created_at(savedUser.getCreated_at())
                         .build()
                         )
@@ -93,8 +94,8 @@ public class UserServiceImpl implements UserService {
                                 .name(userEntity.getCliente().getName())
                                 .lastname(userEntity.getCliente().getLastname())
                                 .dni(userEntity.getCliente().getDni())
-                                .phone_number(userEntity.getCliente().getPhone_number())
-                                .date_of_birth(userEntity.getCliente().getDate_of_birth())
+                                .phoneNumber(userEntity.getCliente().getPhoneNumber())
+                                .dateOfBirth(userEntity.getCliente().getDateOfBirth())
                                 .build())
                         .created_at(userEntity.getCreated_at())
                         .updated_at(userEntity.getUpdated_at())
@@ -131,8 +132,8 @@ public class UserServiceImpl implements UserService {
                                 .name(userEntity.getCliente().getName())
                                 .lastname(userEntity.getCliente().getLastname())
                                 .dni(userEntity.getCliente().getDni())
-                                .phone_number(userEntity.getCliente().getPhone_number())
-                                .date_of_birth(userEntity.getCliente().getDate_of_birth())
+                                .phoneNumber(userEntity.getCliente().getPhoneNumber())
+                                .dateOfBirth(userEntity.getCliente().getDateOfBirth())
                                 .build())
                         .rol(userEntity.getRole())
                         .created_at(userEntity.getCreated_at())
@@ -140,8 +141,4 @@ public class UserServiceImpl implements UserService {
                         .build())
                 .collect(Collectors.toList());
     }
-
-
-
-
 }

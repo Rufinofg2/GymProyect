@@ -19,7 +19,6 @@ import java.util.List;
 @Setter
 public class Cliente {
 
-
     @Id
     private Long id;
 
@@ -35,13 +34,13 @@ public class Cliente {
     private String lastname;
 
     @Column(name = "phone_number", nullable = false, unique = true)
-    private String phone_number;
+    private String phoneNumber;
 
     @Column(name = "dni", nullable = false, unique = true)
     private String dni;
 
     @Column(name = "date_of_birth", nullable = false)
-    private LocalDate date_of_birth;
+    private LocalDate dateOfBirth;
 
     // Relación 1:N con Cuota (apunta al atributo 'client' en Cuota.java)
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -52,7 +51,4 @@ public class Cliente {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<AssitanceEntity> asistencias = new ArrayList<>();
-
-
-
 }
